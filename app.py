@@ -72,7 +72,7 @@ def register():
 
         # Add default accounts
         for name in DEFAULT_ACCOUNTS:
-            db.session.add(Account(name=name, balance=0, user_id=new_user.id))
+            db.session.add(Account(name=name, initial_balance=0, user_id=new_user.id))
 
         db.session.commit()
 
