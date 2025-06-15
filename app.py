@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import bcrypt
+import os
 
 DEFAULT_EXPENSE_CATEGORIES = ["Food", "Transport", "Utilities", "Shopping"]
 DEFAULT_INCOME_CATEGORIES = ["Salary", "Freelance", "Investments"]
@@ -11,7 +12,8 @@ app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
 # ✅ Database setup
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///budget.db'
+db_path = os.path.join('/tmp', 'budget.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 db = SQLAlchemy(app)
 
 # ✅ User model
