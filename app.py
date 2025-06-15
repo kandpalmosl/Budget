@@ -16,10 +16,6 @@ db_path = os.path.join('/tmp', 'budget.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 db = SQLAlchemy(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
 
 # ✅ User model
 class User(db.Model):
